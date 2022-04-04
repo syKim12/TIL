@@ -15,3 +15,7 @@ So I should check out git bash and check in again
 Also sometimes the problem is solved by removing origin
 ex. git remote rm origin => git remote add origin
 So basically, removing origin and adding it again can also help to solve the problem.
+
+
+If it's unavaliable to push because of confilcts, the best way is fixing the problem (rename or delete)
+Rename or delete files and pull and push again
