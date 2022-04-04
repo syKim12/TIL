@@ -1,0 +1,1 @@
+https://stackoverflow.com/questions/6313126/how-to-remove-a-directory-from-git-repository
