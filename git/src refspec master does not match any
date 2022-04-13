@@ -1,0 +1,4 @@
+git reset
+으로 최근 커밋 삭제
+이후 push 했을때 또 오류가 뜬다면, 
+git push origin main (git push origin master x) 으로 push.
