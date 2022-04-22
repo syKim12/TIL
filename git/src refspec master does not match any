@@ -2,3 +2,9 @@ git reset
 으로 최근 커밋 삭제
 이후 push 했을때 또 오류가 뜬다면, 
 git push origin main (git push origin master x) 으로 push.
+단점: default branch는 master이기 때문에 pull request를 해야함. 따라서 아래 방법을 따르는게 좋음
+---------
+
+최근 깃헙에서 default branch 이름을 main에서 master로 바뀌면서, master로 push하려했으나 local main ref가 main인 경우 발생할 수도 있음
+이 경우 git push origin HEAD:master, 혹은 main으로 push 하고 싶다면 git push origin HEAD:main으로 변경하면 해결됨
+reference: https://techglimpse.com/error-src-refspec-main-does-not-match-any-git/
