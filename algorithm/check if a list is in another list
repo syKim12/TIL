@@ -1,0 +1,4 @@
+if both lists don't have duplicates, then we can easily check if a list is in another list by using issubset in python
+
+A.issubset(B)
+This means that A is subset of B
