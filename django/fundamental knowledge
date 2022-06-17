@@ -1,0 +1,11 @@
+장고의 디자인 패턴은 MTV
+M(Model): DB에 저장되는 데이터
+T(Template): 사용자에게 보여지는 영역
+V(View): 요청을 받고 전달하는 데이터들을 해당 앱의 로직으로 가공해 템플릿에 보내주는 역할 = 웹서비스 내부 동작의 논리 담당
+
+웹클라이언트에서 Request를 보내면 View로 가고, View에서 웹클라이언트로 Response를 보낸다.
+View에서 Model로 Model C.R.U.D를 할 수 있으며, template로 template rendering 가능
+Model은 DB로 ORM 방식으로 매핑되기 때문에 sql을 이용하지 않고 간단하게 데이터베이스 사용 가능
+
+GET: 데이터를 수신(GET)하기위한 요청에 사용 ex) 페이지의 html 파일을 요청
+POST: 주로 새로운 리소스를 생성하기 위해 사용
