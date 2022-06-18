@@ -1,0 +1,10 @@
+Process
+1. 데이터 전처리
+2. Data mining
+  - Clustering(군집화)  
+  - Classification <- logistic regression 이용 가능
+  - Regression
+3. Result validation
+  - ROC curve
+  - accuracy, precision, recall 등의 지표 확인
+  - overfit 체크
