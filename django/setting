@@ -1,0 +1,21 @@
+settings.py에서 static 설정
+
+STATICFILES_DIRS = [
+  BASE_DIR/'static',
+]
+
+STATIC_ROOT = os.path.join('staticfiles')
+
+이후 터미널에서 아래 코드 실행
+python manage.py collectstatic 
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
+from django.conf import settings
+from django.conf.urls.static import static
+
+urlpatterns에 static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT) 추가
+
+이후 터미널에서 
+pip install pillow 코드 실행 (: python에서 이미지를 처리해줄 수 있는 패키지로 DB에서 ImageField 사용시 반드시 설치)
