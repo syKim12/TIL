@@ -1,4 +1,12 @@
-EC2: 컴퓨터를 빌려주는 시스템
-S3: 버킷을 만든 후 업로드하며, aws에서 알아서 해주는 것
+EC2: 가상 컴퓨팅
+  구성요소: 인스턴스, EBS, AMI, 보안그룹
 
-S3 구성요소: 버킷,폴더,오브젝트
+S3: 버킷을 만든 후 업로드하는 스토리지
+ 구성요소: 버킷,폴더,오브젝트
+  예시: data ingestion pipeline
+    data -> kinesis -> s3 -> lambda
+    S3에 적재된 데이터를 lambda로 정제, 정제한 데이터를 다시 s3로 저장 가능하다
+    
+    
+IAM: JSON 형식의 policy document
+  Root 계정은 지켜야하며, 'Deny(Effect)' wins over 'Allow(Effect)'
