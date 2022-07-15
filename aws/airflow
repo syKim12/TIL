@@ -1,0 +1,8 @@
+components
+-scheduler: 작업을 스케쥴링
+-worker: 정해진 태스크
+-web server: 화면 인터페이스
+-meta databses: 과거 히스토리
+
+dag: Directed Acyclic Graph로 task를 관리
+Task: 실제로 하는 work
