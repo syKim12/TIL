@@ -6,3 +6,6 @@ components
 
 dag: Directed Acyclic Graph로 task를 관리
 Task: 실제로 하는 work
+
+Data pipeline
+구성요소: data nodes, activities, schedules, preconditons, resources, actions
