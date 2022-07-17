@@ -19,3 +19,5 @@ urlpatterns에 static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT) �
 
 이후 터미널에서 
 pip install pillow 코드 실행 (: python에서 이미지를 처리해줄 수 있는 패키지로 DB에서 ImageField 사용시 반드시 설치)
+
+pip isntall 필수
