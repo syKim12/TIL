@@ -1,1 +1,3 @@
 model의 migration한것이 override했을 경우 발생, 수정한 사항을 주석처리 후 migrate한 뒤 makemigrations 하면 에러 해결
+
+delete migrations files and database
