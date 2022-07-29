@@ -10,3 +10,5 @@ S3: 버킷을 만든 후 업로드하는 스토리지
     
 IAM: JSON 형식의 policy document
   Root 계정은 지켜야하며, 'Deny(Effect)' wins over 'Allow(Effect)'
+  
+ Public subnet에는 NAT gateway를 둬야한다
