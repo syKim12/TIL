@@ -1,0 +1,2 @@
+internet gateway를 수정하면 ec2 linux가 실행되지 않을 수도 있다.
+따라서 nat gateway를 추가하는 경우 라우팅 테이블을 새로 생성, subnet 지정 후, nat gateway를 지정하는 것이 좋을 수 있다.
