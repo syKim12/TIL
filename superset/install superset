@@ -3,3 +3,11 @@ git clone https://github.com/apache/superset.git
 cd superset
 sudo docker-compose -f docker-compose-non-dev.yml pull
 sudo docker-compose -f docker-compose-non-dev.yml up
+
+
+pip3 install pymysql
+touch ./docker/requirements-local.txt
+echo "pymysql" >> ./docker/requirements-local.txt
+sudo docker-compose build --force-rm
+sudo docker-compose -f docker-compose-non-dev.yml pull
+sudo docker-compose -f docker-compose-non-dev.yml up
