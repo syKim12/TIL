@@ -1,0 +1,7 @@
+Transformer
+- Binarizer: feature values greater than the threshold are binarized to 1.0
+- StringIndexer: i.e. Belgium -> 2, France -> 1
+- IndexToString: symmetrically to StringIndexer, maps a column of label indicies back to a column containing the origin labels
+- VectorIndexer: index categorical features in datasets of vectors
+- Normalizer: transforms a dataset of vector rows, normalizing each vector to have unit norm
+-
