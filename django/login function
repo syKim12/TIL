@@ -1,1 +1,2 @@
 authenticationForm을 활용하여 구성
+email을 로그인 method로 활용 시 authenticate 도 def로 custom해야함
