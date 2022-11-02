@@ -1,0 +1,16 @@
+bubble sort
+- O(n^2)
+- 안정 정렬
+
+selection sort
+- O(n^2)
+- 불안정 정렬
+
+insertion sort
+- O(n^2)
+- 안정 정렬
+
+quick sort
+- O(nlogn), but worst case에서는 O(n^2)
+- 하지만 median 채택 방식으로 최적화할 수 있음
+- 불안정 정렬
