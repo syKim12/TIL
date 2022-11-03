@@ -11,6 +11,11 @@ insertion sort
 - 안정 정렬
 
 quick sort
-- O(nlogn), but worst case에서는 O(n^2)
+- O(nlogn), but worst case(이미 정렬되어 있는 경우)에서는 O(n^2)
 - 하지만 median 채택 방식으로 최적화할 수 있음
 - 불안정 정렬
+
+merge sort
+- O(nlogn)
+- 퀵소트와 달리 요소를 최대한 자른 후 비교하며 정렬하는 방식
+- 안정 정렬
