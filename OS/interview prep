@@ -12,6 +12,7 @@
 
 프로세스가 생성되면 PCB에 Process의 메타데이터가 저장된다.
 PCB 필요한 이유: 인터럽트 등의 이벤트가 발생하였을 때 다시 수행할 대기중인 프로세스에 관한 저장값을 PCB에 저장해둔다.
+PCB: Process state, Process counter, CPU Register, CPU scheduling information, Memory management information, Account information, I/O status information
 
 
 Context Switching: 수행 중인 프로세스를 변경하여 CPU의 레지스터 정보가 변경되는 것, 보통 인터럽트 등이 발생할 때 일어난다.
