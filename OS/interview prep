@@ -69,4 +69,14 @@ e.g.) 멀티 프로세스 환경에서 공유 메모리 내의 커널 데이터�
 페이지 교체 알고리즘: 새로운 페이지 할당해야할 때 현재 할당된 페이지 중 어느 것을 교체할지 정하는 방식
 victim page: out 되는 페이지
 FIFO 알고리즘: 가장 먼저들어온게 가장 먼저 나간다
-LRU(Least Recently Used) 알고리즘: 최근에 사용되지 않은 페이지가 
+LRU(Least Recently Used) 알고리즘: 최근에 사용되지 않은 페이지가 나간다.
+
+프로세스 스케줄링 알고리즘
+- 선점: Shortest Remaining First, Round Robin, Priority
+- 비선점: Shortest Job First, First Severed First Out, Priority
+
+
+메모리 할당 알고리즘
+- First Fit
+- Best Fit
+- Worst Fit
