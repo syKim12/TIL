@@ -1,0 +1,2 @@
+loss가 min인 epoch으로 최적화 해야한다.
+또한 step per epoch은 통상적으로 20정도로 둔다
