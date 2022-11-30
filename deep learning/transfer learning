@@ -1,0 +1,2 @@
+전이학습을 뒤의 layer부터 적용하며 weights를 주는 것이 좋음
+일부 layer train 하고 나머지 layer는 frozen하는 방식도 가능
