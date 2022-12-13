@@ -1,0 +1,5 @@
+generator network와 discriminator network로 구성
+
+cycle Gan
+- u net에서 connection skip 해서 성능 더 좋다
+- pix2pix는 label이 필요하지만 loss 도입으로 cycle gan은 필요하지 않다
