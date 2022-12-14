@@ -1,4 +1,4 @@
-generator network와 discriminator network로 구성
+generator network와 discriminator network로 구성되어 generator를 이용해 사진을 만들 수 있고, discriminator로 fake인 데이터와 실제 데이터를 구분할 수 있게끔 한다. 가짜데이터를 잘 구분하지 못할때까지 학습한다.
 
 cycle Gan
 - u net에서 connection skip 해서 성능 더 좋다
