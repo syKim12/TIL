@@ -1,1 +1,3 @@
 python을 이용해 sort할 때 key, lambda 이용해 정렬
+
+for 안에서 append를 하는 것은 메모리 비효율
