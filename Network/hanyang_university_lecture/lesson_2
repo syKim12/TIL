@@ -1,0 +1,67 @@
+# 2차시
+
+******1차시 Recap******
+
+- 사용자가 보내는 데이터가 패킷이라는 한 묶음 단위로 라우터를 거쳐 이동
+    - 패킷은 비트의 집합
+- 라우터의 queue에 패킷이 쌓이면 지연 발생. 버퍼보다 패킷수가 많아지면 drop이 돼서 패킷 유실 일어남
+- 라우터에서 패킷이 거쳐 생기는 딜레이
+    - 패킷 검사하는데 걸리는 processing delay
+    - 버퍼로 저장할때 queueing delay
+    - queue에서 기다리다가 전송되어야하는데 하나의 패킷이 온전하게 링크로 나갈때까지 걸리는 transmission delay
+    - 패킷이 링크에 올라와서 다음 라우터까지 갈 때 걸리는 시간이 propagation delay
+- 패킷은 한 묶음으로 이동한다
+
+************2차시************
+
+네트워크 계층
+
+- application layer: HTTP
+- transport layer: TCP/UDP
+- network layer: IP
+- link layer: WiFi, LTE, Eternet
+- physical layer:
+
+client-server architecture
+
+- server: permanant한 ip 주소 보유
+- client: 고정적이지 않은 ip 주소 보유
+
+processes communicating
+
+- 프로세스 간의 통신에서는 os가 system call 만들어 놓음, 여기서 만든 interface가 socket
+
+sockets
+
+- 소켓의 주소를 알아야 연결 가능
+- 소켓 주소를 indexing하는 것이 필요하다. 이 때 indexing 하는 것이 IP address와 Port
+    - ip address: 인터넷 상 컴퓨터의 위치
+    - port number: 여러 프로세스 중 어떤 특정 프로세스인지
+
+app level
+
+- 웹브라우저들이 80번 포트를 쓰는 이유
+    - 서버는 24시간 켜져있으며 주소가 일정해야함
+    - ip 주소 번역하는 것이 dns
+    - 포트 넘버가 다 다르면 찾기 힘들기 때문에 웹브라우저들은 80번 포트를 쓴다.
+
+transport service의 니즈
+
+- data integrity
+    - 데이터 유실되는 것에 대한 기능을 TCP(transport layer)에서 보장
+- throughput
+- timing
+- security
+
+HTTP: hypertext transfer protocol
+
+- 클라이언트에서 http protocol을 이용해 request를 보내면 서버에서 http protocol을 이용하여 response를 보내준다.
+- http는 tcp를 이용
+- http는 stateless: http는 매우 단순해서 request에 해당하는 파일을 response로 보내주고 기억을 하지 않는다. 상대방에 대한 상태를 기억하지 않는다.
+- tcp 이용하는 방식
+    - non-persistent HTTP
+        - tcp connection을 끊고 다시 tcp를 만들어서 response
+        - 끊기면 다시 connection 만들어서 request와 response
+    - persistent HTTP
+        - tcp를 끊지 않고 계속해서 재사용
+        - 보통은 웹 브라우저에서 persistent HTTP를 사용한다.
