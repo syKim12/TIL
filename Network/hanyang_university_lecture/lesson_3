@@ -1,0 +1,45 @@
+소켓 종류
+
+- TCP (Sock_stream)
+- UDP (Sock_dgram)
+
+소켓 API
+
+- 웹서버: 소켓 생성 → 특정 포트에다가 bind → listen 용도로 쓰겠다 → client로부터 요청받을 준비, accept() → 서버는 클라이언트에서 connection이 올때까지 여기서 block
+- 클라이언트: 소켓 열음 → connect → TCP three-way handshaking 함으로써 클라이언트와 서버 연결
+- 클라이언트에서 write하면 서버에서 read
+
+function
+
+- socket: 리턴 값으로 방금 생성한 소켓의 id. 이 id 값으로 소켓을 계속 지칭한다.
+- bind: 방금 생성한 소켓의 id활용해 특정 포트에 bind
+- listen: 혹시 동시에 request가 들어오면 최대 몇개까지 받겠다
+- accept: client로부터 연결 대기
+
+recap
+
+- 서버에서 tcp 소켓 만들고 bind로 특정 포트에 바인드, listen, accept로 클라이언트 요청 기다리겠다. 멈춰서 block하다가 connection request를 클라이언트에서 보내면 수행. 클라이언트 역시 tcp 소켓 만들고 connect한다. connect 함수의 파라미터로 서버의 주소와 포트 넘버.
+- 클라이언트는 바인드 함수를 안쓴다. 클라이언트는 아무 포트나 써도 된다. 굳이 특정 포트를 쓸 필요가 없음
+- 이 뒤로는 단순히 read and write
+
+transport layer라면 기본적으로 제공해야하는 multiplexing/ demultiplexing
+
+- 컴퓨터 내부에 많은 프로세스 들이 있다.
+- app 에서 transport layer로 데이터가 내려옴, 내려오는 구멍이 많은데 이 것을 세그먼트로 만들어서 밑으로 보내주기 때문에 multiplexing. multiplexing은 sender 측
+- demultiplexing: segment를 받아서 세그먼트의 메시지를 받아서 메시지를 받아야되는 알맞는 프로세스에 올려야된다. 하나가 들어와서 여러가지 중에서 골라야한다. demultiplexing은 receiver 측
+- demultiplexing 방법
+    - 세그먼트의 헤더에 적힌 정보를 보고 판단
+    - 세그먼트는 데이터와 헤더로 이루어진다
+    - header내 여러 필드 중 중요한 필드: source port, dest port
+- udp가 demultiplexing 하는 방법
+    - 통신 위해 소켓 열음
+    - 메시지가 소켓을 통해 내려와서 세그먼트안에 담겨 간다. 세그먼트에 적힌 헤더에 source port(자기자신 포트 넘버)와 dest port 정보 담김
+    - 컴퓨터의 ip정보는 network 전송단의 packet의 header에 적혀있다.
+    - udp를 이용할 경우 dest ip와 dest port 만을 이용해 어떤 소켓으로 올릴지 demultiplexing을 한다. (source port와 source port는 달라도 된다 → 아무나 다 올 수 있다.)
+    - udp는 동작이 단순하다.
+    - checksum을 가지고 에러를 판단한다. 에러가 있다면 올리지 않고 drop 시킨다.
+- tcp가 demultiplexing 하는 방법
+    - source ip, source port number
+    - dest ip, dest port number
+    - 모두 이용해서 demultiplexing을 한다. 하나라도 다르면 다른 소켓으로 간다.
+    - e.g. 네이버에서는 소켓을 유저를 위해 여러개 만들어둔다.
