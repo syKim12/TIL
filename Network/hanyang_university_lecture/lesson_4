@@ -1,0 +1,23 @@
+- unreliable한 채널에서는 패킷 로스 혹은 에러가 발생할 수 있음
+- RDT v.1.0
+    - 에러 발생하지 않고 완벽하게 reliable하다면 우리는 할 일이 없다
+- RDT v.2.0
+    - error detection is needed
+    - 패킷의 에러 확인
+    - 에러가 있다면 다시 보내달라고 요청해야함, 즉 피드백이 필요
+    - 패킷에 번호를 붙임으로써, 즉 sequence number를 이용해 duplicate인지 확인
+- handling duplicate packets
+    - 피드백에도 에러가 있을 수 있기 때문에 sequence number를 붙인다
+    - 재전송했을때의 duplicate는 sequence number로 파악
+    - sequence number field를 최소화시키고 싶음. → 해당 예시에서는 0과 1 인 sequence number 2개로도 duplicate 파악 가능
+    - receiver쪽에서는 잘못된 PKT를 받아도 무조건 ACK를 보내야한다.
+- RDT v.3.0: 메시지 유실
+    - sender가 pck를 보냈는데 유실됐으면 피드백을 못 듣는다.
+    - 이 상황을 해결하기 위해 sender쪽에서 패킷을 보내고 나서 타이머 이용
+    - 시간이 지나면 유실된거라 판단 후 재전송
+    - 타이머의 시간이 짧으면 유실이 일어났을 때의 recovery가 빠르다. But 중복된 패킷 발생할 수 있음 (오래 걸렸던 것일 뿐일 수도 있다.) 네트워크 오버헤드 발생할 수 있음
+    - 시간이 길면 오버헤드는 적지만 에러가 발생했을 때의 recovery가 느리다
+- RDT v.3.0 동작
+    - 리시버는 잘 받은 packet의 number를 ack에 담아서 보낸다.
+    - 그림에서의 pkt 0번 패킷 pkt 0번 패킷은 다른 데이터 (예시에서는 0과 1로도 duplicate 파악 가능하기 때문)
+    - RDT V.3.0은 sender와 receiver의 reliable한 흐름을 지니고 있다.
