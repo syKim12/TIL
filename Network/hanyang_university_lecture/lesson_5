@@ -1,0 +1,25 @@
+4차시 recap
+
+- packet error와 packet loss가 unreliable 하게 한다
+- packet error를 방지하기 위해 error detection, feedback, retransmission, sequence number가 활용됨
+- packet loss를 방지하기 위해 time out이 활용된다
+
+Pipelined protocols
+
+- 한번에 많은 패킷을 보내는게 한번에 하나씩 보내는것보다 더 빠르다.
+
+Go-Back-N
+
+- window size만큼 피드백을 받지 않고 한번에 보낼 수 있다.
+- ACK는 cumulative ACK로 저장. (e.g. ACK 11이라면 11까지 잘 전송되었다)
+- receiver는 단순히 작동하고 sender가 거의 모든일을 한다.
+- window 안의 패킷은 버퍼에 저장
+
+selective repeat
+
+- selective하게 재전송해준다.
+- 여기서는 ack가 cumulative가 아니다
+- receiver가 순서가 맞지 않게 들어온 패킷이라도 에러가 없다면 저장해둔다
+- 딜레마
+    - 유실된 패킷을 보냈을 때 새로운 패킷이라고 착각할 수 있음
+    - 적절한 sequence 사이즈를 알아야한다.
