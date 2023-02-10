@@ -1,0 +1,39 @@
+TCP overview
+
+- point to point: one sender, one receiver
+- full duplex data: data가 양방향으로 통한다.
+- window는 버퍼라는 개념. 재전송하기 위해 저장해둔다. receiver도 buffer 필요 왜냐하면 out of order인 것 저장하기 위해. 각자 대응되는 sender와 receiver 버퍼가 있다.
+- flow controlled: receiver의 소화능력에 맞게 보내준다.
+- congestion controll: 내부 네트워크가 받아들일 수 있는 만큼 보내준다.
+
+TCP segment structure
+
+- APP: message
+- TCP: TCP의 전송단위는 segment
+- IP: 전송단위는 패킷
+- Link: 전송단위는 프레임
+- Data:
+- tcp에서 ack10이면 9번 까지 잘 들어왔고 10번을 요청하는 것
+- example
+    - A는 78번까지 다 보냄, 79번 기다림 (bc ACK = 79)
+    - 프로토콜이라면 header가 존재해야한다.
+- 데이터 들어오면 tcp에서는 바로 보내지 않고 기다리고 ack를 하라고 권고. 왜냐하면 데이터를 보내면서 같이 보내면 더 효율적. 실제로 데이터가 세그먼트 하나가 들어오는게 아니라 데이터가 쏟아져 들어오기 때문에 일일이 ack를 하는것 x. tcp에서는 cummulative ack
+- Timeout — function of RTT
+    - time out value는 어떻게?
+        - receiver 갔다가 돌아오는 것을 RTT(round time)이라 함
+        - timeout = RTT로 생각해보자
+        - 모든 세그먼트에 대해서 RTT 가 고정되어있으면 좋다. 하지만 세그먼트 지나가는 경로가 다르기 때문에 세그먼트 마다 RTT 다르다. 경로가 같더라도 queueing delay가 바뀌기 때문에 RTT가 다르다.
+        - estimated RTT 공식에 margin을 이용해 timeout value를 설정한다.
+
+tcp reliable data transfer
+
+- 파이프라인 방식
+- cumulative acks 이용
+- tcp는 타이머 하나 쓴다.
+    - Go back N과 비슷. 다른 점은 tcp는 윈도우 재전송이 아닌 해당하는 부분만 재전송
+
+타이머 터지기 전에 유실 아는 법(fast retransmit)
+
+- e.g. cumulative ack를 이용하므로 예를 들어 10번이 유실 났다면 ack 10이 반복 → 타이머가 터지기 전에 유실알 수 있음
+- 꼭 필요한 기능은 아니지만 더 빠르게 동작시키기 위한 기능
+- 하지만 timer는 꼭 필요함
