@@ -1,0 +1,35 @@
+# 7차시
+
+flow control
+
+- tcp는 두 프로세스 사이 데이터 주고받는것
+- flow control: 받는 사람 능력에 맞춰 데이터 속도 조절 가능하다.
+    - TCP의 receive side의 receiver buffer가 available space를 두고 있다.
+
+TCP 3-way handshake
+
+- SYN bit=1 → tcp연결하고 싶다는 의사표현, 나의 sequence number를 상대방에게 알려준다.
+
+closing tcp connection
+
+- fin이 서버에서 클라이언트로 들어오고 ack가 갈때까지 기다린다.
+- timeout value는 고정되지 않고 변하는 값이다.
+
+tcp 의 중요한 요소
+
+- flow control
+    - sender가 보내는 양, 속도는 자기 자신이 조절은 하지만 사실은 receiver buffer(받는 사람 능력), network (중간 전달자 능력)에서 좌우된다.
+    - sender는 receiver와 네트워크 능력치 중 상태가 안 좋은 쪽에 맞춰야한다. 따라서 늘 체크를 해야한다. receiver 상태는 receiver buffer로 정확히 알 수 있고 network 상태는 congestion control을 통해 알아야한다
+- congestion control
+- reliability data transfer
+- e.g.)
+    - A와 B 사이 퍼블릿 인터넷 네트워크
+    - 네트워크가 막히면 패킷이 유실될 수 있다. 그러면 tcp는 재전송한다. 계속 재전송하면서 상태가 안 좋아질 수 있다. tcp는 네트워크가 막히면 무너질 수 있다. 따라서 tcp는 네트워크가 막히지 않도록 해야한다.
+    - 네트워크를 마구 보내는 것이 아니라 막히지 않게 해야한다. 막힐것 같다면 데이터 보내는 속도를 줄여야 한다. 네트워크 상태가 괜찮다면 데이터 보내는 속도를 빠르게 한다.
+    - 네트워크 상태는 congestion control을 통해 알아야한다.
+
+congestion control
+
+- end-end congestion control
+    - 정보를 유추해서 통제
+    - tcp segment에서 오가는 ack로 유추한다. 따라서 아주 정확하지는 않다.
