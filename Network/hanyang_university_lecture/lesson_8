@@ -1,0 +1,10 @@
+# 8차시
+
+tcp congestion control
+
+- 3 main phases
+    - slow start: 네트워크 상황을 모르기 때문에 조금씩 시작한다.
+        - 한개를 보내서 잘 가면 계속해서 두배씩 양을 증가시켜서 보낸다.
+    - additive increase:
+        - threshold 지점에서는 linear하게 증가시킨다. window 사이즈를 늘리다가 문제가 생기는 지점
+    - multiplicative decrease:
