@@ -1,0 +1,19 @@
+import datetime
+
+# Set the start and end date of the year
+start_date = datetime.date(2023, 1, 1)
+end_date = datetime.date(2023, 12, 31)
+
+# Initialize a list to store the dates of every Saturday
+saturdays = []
+
+# Loop through the dates from the start to end date and check if it's a Saturday
+current_date = start_date
+while current_date <= end_date:
+    if current_date.weekday() == 5:  # 5 represents Saturday
+        saturdays.append(current_date)
+    current_date += datetime.timedelta(days=1)
+
+# Print the list of every Saturday in 2023
+for saturday in saturdays:
+    print(saturday)
